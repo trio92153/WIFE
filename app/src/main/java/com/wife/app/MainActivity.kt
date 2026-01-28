@@ -1,19 +1,22 @@
 package com.wife.app
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import android.widget.TextView
+import android.view.Gravity
+import android.graphics.Color
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
-            MaterialTheme {
-                Text(text = "WIFE ❤️")
-            }
-        }
+        val tv = TextView(this)
+        tv.text = "WIFE ❤️"
+        tv.textSize = 26f
+        tv.setTextColor(Color.WHITE)
+        tv.setBackgroundColor(Color.BLACK)
+        tv.gravity = Gravity.CENTER
+
+        setContentView(tv)
     }
 }
