@@ -4,13 +4,19 @@ workflows:
     max_build_duration: 60
 
     environment:
+      java: 11
       vars:
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m"
-      java: 11
 
     scripts:
+      - echo "Making gradlew executable"
       - chmod +x gradlew
+
+      - echo "Building debug APK"
       - ./gradlew assembleDebug
+
+      - echo "Searching for APK files"
+      - find . -name "*.apk"
 
     artifacts:
       - app/build/outputs/**/*.apk
