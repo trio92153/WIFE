@@ -1,24 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wife">
-
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
     <application
+        android:allowBackup="true"
         android:label="WIFE"
-        android:theme="@android:style/Theme.Material.Light">
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        android:supportsRtl="true">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".TimerService"
-            android:exported="false"
-            android:foregroundServiceType="dataSync"/>
     </application>
 </manifest>
