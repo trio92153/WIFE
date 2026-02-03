@@ -1,0 +1,11 @@
+workflows:
+  android-workflow:
+    name: WIFE Android 11 Build
+    environment:
+      android_signing:
+        - debug_keystore
+    scripts:
+      - chmod +x gradlew
+      - ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/**/*.apk
