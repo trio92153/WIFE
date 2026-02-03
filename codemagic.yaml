@@ -3,10 +3,15 @@ workflows:
     name: WIFE Android 11 Stable
     max_build_duration: 60
     environment:
+      android_signing:
+        - debug_keystore
       vars:
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m"
+      java: 11
+
     scripts:
       - chmod +x gradlew
       - ./gradlew assembleDebug
+
     artifacts:
       - app/build/outputs/**/*.apk
