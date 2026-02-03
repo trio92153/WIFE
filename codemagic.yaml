@@ -1,20 +1,20 @@
 workflows:
   android-workflow:
-    name: WIFE Android Build
+    name: WIFE Android Debug Build
     max_build_duration: 60
     environment:
-      vars:
-        PACKAGE_NAME: "com.example.wife"
-      android_signing:
-        - keystore_reference: null
       groups:
         - android
     scripts:
-      - name: Set up local.properties
+      - name: Create local.properties
         script: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Build APK
+      - name: Grant execute permission for Gradle
+        script: |
+          chmod +x ./gradlew
+
+      - name: Build debug APK
         script: |
           ./gradlew assembleDebug
     artifacts:
