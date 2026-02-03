@@ -6,12 +6,9 @@ workflows:
       groups:
         - android
     scripts:
-      - name: Create local.properties
+      - name: Build debug APK
         script: |
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
-
-      - name: Build debug APK (no gradlew)
-        script: |
-          gradle assembleDebug
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/**/*.apk
