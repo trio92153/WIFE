@@ -9,14 +9,11 @@ workflows:
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m"
 
     scripts:
-      - echo "Making gradlew executable"
       - chmod +x gradlew
-
-      - echo "Building debug APK"
       - ./gradlew assembleDebug
-
-      - echo "Searching for APK files"
-      - find . -name "*.apk"
+      - echo "APK files found:"
+      - find . -type f \( -name "*.apk" -o -name "*.aab" \)
 
     artifacts:
-      - app/build/outputs/**/*.apk
+      - "**/*.apk"
+      - "**/*.aab"
